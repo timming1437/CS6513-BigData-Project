@@ -1,0 +1,155 @@
+\documentclass[a4paper,12pt]{article}
+% Additional Options
+\usepackage{booktabs}
+\usepackage{enumerate}
+\usepackage{multirow}
+\usepackage{subfigure}
+\usepackage{color}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage[section]{placeins}
+\usepackage{geometry}
+\usepackage{float}
+\usepackage{xcolor}
+\usepackage{listings}
+\geometry{left=3.0cm, right=3.0cm, top=2.5cm, bottom=2.5cm}
+\usepackage{cite}
+\usepackage{setspace}%
+\usepackage{indentfirst}
+\renewcommand\thesection{\Roman{section}}
+
+\setlength{\parindent}{1.5em}
+%\setlength\parskip{.3\baselineskip}
+
+\lstset{ %  
+	backgroundcolor=\color{white},   % choose the background color; you must add \usepackage{color} or \usepackage{xcolor}  
+	basicstyle=\footnotesize,        % the size of the fonts that are used for the code  
+	breakatwhitespace=false,         % sets if automatic breaks should only happen at whitespace  
+	breaklines=true,                 % sets automatic line breaking  
+	captionpos=bl,                    % sets the caption-position to bottom  
+	commentstyle=\color{mygreen},    % comment style  
+	deletekeywords={...},            % if you want to delete keywords from the given language  
+	escapeinside={\%*}{*)},          % if you want to add LaTeX within your code  
+	extendedchars=true,              % lets you use non-ASCII characters; for 8-bits encodings only, does not work with UTF-8  
+	frame=single,                    % adds a frame around the code  
+	keepspaces=true,                 % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)  
+	keywordstyle=\color{blue},       % keyword style  
+	%language=Python,                 % the language of the code  
+	morekeywords={*,...},            % if you want to add more keywords to the set  
+	numbers=left,                    % where to put the line-numbers; possible values are (none, left, right)  
+	numbersep=5pt,                   % how far the line-numbers are from the code  
+	numberstyle=\tiny\color{gray}, % the style that is used for the line-numbers  
+	rulecolor=\color{black},         % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. comments (green here))  
+	showspaces=false,                % show spaces everywhere adding particular underscores; it overrides 'showstringspaces'  
+	showstringspaces=false,          % underline spaces within strings only  
+	showtabs=false,                  % show tabs within strings adding particular underscores  
+	stepnumber=1,                    % the step between two line-numbers. If it's 1, each line will be numbered  
+	stringstyle=\color{orange},     % string literal style  
+	tabsize=2,                       % sets default tabsize to 2 spaces  
+	%title=myPython.py                   % show the filename of files included with \lstinputlisting; also try caption instead of title  
+}  
+
+
+\begin{document}
+
+\begin{spacing}{1.3}%
+\vspace*{0.25cm}
+
+\hrulefill
+
+\thispagestyle{empty}
+
+\begin{center}
+\begin{large}
+\sc{New York University \vspace{0.3em} \\
+	Tandon School of Engineering \vspace{0.3em} \\ CS 6513: Big Data}
+\end{large}
+
+\hrulefill
+
+\vspace*{2cm}
+
+\begin{large}
+\sc{{Project Part 1}}
+\end{large}
+\vspace*{2cm}
+
+\begin{large}
+	\sc{{The Effect of COVID-19 Government Policies on Social Distancing and Infection Numbers}}
+\end{large}
+
+\end{center}
+
+\vfill
+
+\begin{table}[h!]
+\begin{center}
+\begin{tabular}{ll}
+	Group Name:  OneTeammateRanAway\hspace*{2em} & \\
+	&\\
+	
+	Name: Haifeng Zhang \hspace*{2em}&
+	netID: hz2149\\
+	
+Name: Tianyi Zhao \hspace*{2em}&
+netID: tz1330\\
+
+ \hspace*{2em} \\
+ \\
+
+Date: April 19 2020
+
+
+\end{tabular}
+\end{center}
+\end{table}
+
+\newpage
+
+
+\section{Introduction}
+
+In the COVID-19 pandemic, social distancing has been a major mechanism to prevent outbreaks and to reduce the risk of infection. U.S state governments have raised policies on social contacts such as school closure, restaurant limits and other stay-at-home policies. However, the public may take measures not immediately or before the governments publish orders. This project will study on the community mobility change to the safety policies.
+
+The project will focus on the effects of governments' stay-home policies on social distancing in the United States, especially in the New York State. We will use the public mobility data by Google and an open source government policy data. Furthermore, we will combine the infection numbers to our results and evaluate how effective the policies are in reducing COVID-19 spread.
+
+
+\section{Objectives and Overview}
+
+This project has two main problems:
+
+\begin{itemize}
+	\item How community mobility changes in response to the government stay-at-home orders in the United States.
+	\item How effective is social distancing in reducing COVID-19 spread.
+\end{itemize}
+
+For the first problem, we will use community mobility data by Google to find the mobility percentage changes per day in March and April of each state in the US. And we can extract policy data of each state governments so we can match the time point to the mobility curve. We will compare the curve before and after the publish time of policies. Also, we may compare it to the same time period in 2019 or the previous weeks.
+
+The results will be extended to the COVID-19 infection data. We will first apply a simple exponential model to the state infection curve to figure out whether the government measures reduce the increase rate. There might not be a direct conclusion since the infection number can be influenced by multiple factors. We will try to use some prediction models raised by researchers to compare the patterns of infection curve before and after governments' stay-at-home orders.
+
+
+
+\section{Data}
+
+The project will use 3 open source data sets:
+\begin{table}
+	
+	\newcommand{\tabincell}[2]{\begin{tabular}{@{}#1@{}}#2\end{tabular}}
+\begin{tabular}{|c|c|c|}
+
+	\hline 
+	Data set name & Link & Description\\
+	\hline
+\tabincell{c}{Johns Hopkins \\ dashboard data} &\tabincell{c}{https://github.com/\\CSSEGISandData/COVID-\\19/tree/master/csse\\\_covid\_19\_data}&  \tabincell{c}{Daily reports for new cases \\by Johns Hopkins CSSE, \\including daily case increase \\in each county in the United States} \\
+\hline
+\tabincell{c}{COVID-19 Community \\Mobility Reports} & \tabincell{c}{https://www.gstatic.com/\\covid19/mobility/Global\\\_Mobility\_Report.csv}& \tabincell{c}{
+	These Community Mobility Reports \\aim to provide insights into what \\has changed in response to policies \\aimed at combating COVID-19. \\The reports chart movement trends \\over time by geography, across \\different categories of places such as \\retail and recreation, groceries \\and pharmacies, parks, transit \\stations, workplaces, and residential.} \\
+\hline
+\tabincell{c}{Government imposed \\safety measures} & \tabincell{c}{https://data.humdata.\\org/dataset/acaps-covid\\19-government-measures-\\dataset} & \tabincell{c}{4000-row dataset that compiles \\official public safety measures such \\as social distancing, school \\closures, etc. imposed by countries \\around the world. \\Includes the dates when these \\measures were imposed and \\the official or news source. \\Compiled by Assessment \\Capacities Project (ACAPS).}\\
+\hline 
+\end{tabular}
+\end{table}
+
+
+\end{spacing}
+\end{document}
